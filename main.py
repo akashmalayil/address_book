@@ -58,7 +58,7 @@ def show(id:int, db : Session = Depends(get_db)):
         detail = f"Address with the id {id} does not exist")
     return address
 
-# Get address by id
+# Search address by cordinates and distance
 @app.get("/search",status_code=status.HTTP_200_OK, response_model=List[schemas.ShowAddressBook])
 def show(latitude:float=0,longitude:float=0,distance:float=0,db : Session = Depends(get_db)):
     query = db.query(models.AddressBook)
